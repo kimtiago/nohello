@@ -1,0 +1,2 @@
+# Every text file uses LF, whatever the contributor's system
+* text=auto eol=lf

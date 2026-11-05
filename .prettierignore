@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+dist
+out
+styles
+node_modules
+.next
+.vscode
+AGENTS.md

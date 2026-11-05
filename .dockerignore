@@ -1,0 +1,17 @@
+.git
+.github
+.husky
+.claude
+.vscode
+.playwright-mcp
+.next
+out
+node_modules
+.env
+.env.*
+*.md
+*.tsbuildinfo
+Dockerfile
+docker-compose.yml
+docs
+test

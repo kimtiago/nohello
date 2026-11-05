@@ -1,0 +1,86 @@
+{
+    "name": "nohello",
+    "version": "1.0.0",
+    "private": true,
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kimtiago/nohello.git"
+    },
+    "engines": {
+        "node": ">=24"
+    },
+    "devEngines": {
+        "packageManager": {
+            "name": "npm",
+            "version": ">=11",
+            "onFail": "error"
+        }
+    },
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "lint": "eslint .",
+        "typecheck": "tsc --noEmit",
+        "check": "npm run lint && npm run typecheck && npm run format:check && npm run lint:md && npm test",
+        "test": "node --test \"test/*.test.mjs\"",
+        "lint:md": "markdownlint-cli2 \"**/*.md\"",
+        "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\"",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "prepare": "husky"
+    },
+    "lint-staged": {
+        "*.{ts,tsx,js,jsx,mjs}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,jsonc,css,yml,yaml}": [
+            "prettier --write"
+        ],
+        "*.md": [
+            "markdownlint-cli2 --fix",
+            "prettier --write"
+        ]
+    },
+    "dependencies": {
+        "@vercel/analytics": "^2.0.1",
+        "@vercel/speed-insights": "^2.0.0",
+        "lucide-react": "^1.64.0",
+        "next": "^16.4.3",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1"
+    },
+    "devDependencies": {
+        "@eslint/compat": "^2.1.1",
+        "@eslint/js": "^10.0.1",
+        "@tailwindcss/postcss": "^4.3.3",
+        "@types/node": "24.1.0",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@typescript-eslint/eslint-plugin": "^8.70.1",
+        "@typescript-eslint/parser": "^8.70.1",
+        "eslint": "^10.13.0",
+        "eslint-config-next": "^16.4.3",
+        "eslint-config-prettier": "^10.1.8",
+        "globals": "^17.13.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^17.6.0",
+        "markdownlint-cli2": "^0.24.0",
+        "prettier": "^3.9.10",
+        "sharp": "^0.35.5",
+        "tailwindcss": "^4.3.3",
+        "typescript": "^6.0.3"
+    },
+    "overrides": {
+        "eslint-plugin-react": {
+            "eslint": "$eslint"
+        },
+        "eslint-plugin-import": {
+            "eslint": "$eslint"
+        },
+        "eslint-plugin-jsx-a11y": {
+            "eslint": "$eslint"
+        }
+    }
+}

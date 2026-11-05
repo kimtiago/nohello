@@ -1,0 +1,20 @@
+# Fill in your settings and run: docker compose up -d
+# After changing them, apply with the same command.
+services:
+  nohello:
+    image: kimtiago/nohello:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # Public address of the site, used in link previews
+      NEXT_PUBLIC_SITE_URL: https://your-site.com
+      # pt-BR, en, es, fr, de or it. Empty: each visitor gets their browser's language, and link previews use English
+      NEXT_PUBLIC_LANGUAGE: ""
+      # Full name, shown in the header. The rest of the page uses only the first name. Empty: a generic name
+      NEXT_PUBLIC_OWNER_NAME: ""
+      # Photo: a public http(s) URL, such as https://github.com/YOUR_USER.png. Empty: a generic avatar
+      NEXT_PUBLIC_OWNER_PHOTO: ""
+      # GIFs in the conversation: any public http(s) URL, swap them for your favorites. Empty: that message doesn't appear
+      NEXT_PUBLIC_GIF_1_URL: https://media.giphy.com/media/6uGhT1O4sxpi8/200w.gif
+      NEXT_PUBLIC_GIF_2_URL: https://media.giphy.com/media/2uwZ4xi75JhxZYeyQB/200w.gif

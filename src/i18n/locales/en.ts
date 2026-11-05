@@ -1,0 +1,106 @@
+import type { LocaleDefinition } from "@/i18n/types";
+
+export const en: LocaleDefinition = {
+    ogLocale: "en_US",
+    fallbackName: "Jane Doe",
+    messages: (firstName) => ({
+        title: "Got your message 👀",
+        description: `${firstName} here! I left you a quick note before I reply. It won't take long.`,
+
+        online: "online",
+        today: "today",
+        you: "You",
+        typing: `${firstName} is typing`,
+        contactPhone: "(202) 555-0100", // Reserved for fiction in the US
+        chat: "Message",
+        moreMessages: "More messages",
+        moreMessagesLabel: "More messages: scroll down",
+
+        headline: "Please don't just send me",
+        quote: ["“", "”"],
+        greetings: [
+            "hi",
+            "hello",
+            "hey",
+            "good morning!",
+            "yo",
+            "you there?",
+            "hiii",
+            "👋",
+            `hey ${firstName}`,
+            "good afternoon",
+            "sup",
+            `${firstName}?`,
+            "heyyy",
+            "how are you?",
+            "hello?",
+        ],
+        voicemail:
+            "Imagine leaving a voicemail that just says “hi” and hanging up. The other person listens and still has no idea what you wanted. 🤷 Chat works the same way.",
+
+        differenceTitle: "The difference",
+        howSo: "what do you mean? 😅",
+        twoWays: "Look: the same question, asked two ways 👇",
+        bad: {
+            title: "Not like this",
+            summary: "11 minutes for one question",
+            hi: "hi",
+            gapOne: "4 min later",
+            replyHi: "hi! what's up? 🙂",
+            howAreYou: "how are you?",
+            gapTwo: "3 min later",
+            replyHowAreYou: "good, you? 😅",
+            ask: "can you send me that electrician's contact?",
+            answer: "sure",
+        },
+        good: {
+            title: "Like this",
+            summary: "1 minute, and nobody was left waiting",
+            ask: `Hi ${firstName}, how are you? Can you send me the contact of that electrician you recommended? 🙏`,
+            answer: "Hey! Here's his contact 👍",
+            thanks: "Thanks!",
+        },
+
+        whyTitle: "Why I ask for this",
+        whatsTheProblem: "but what's wrong with saying hi first?",
+        typingIsSlow: "Typing is slower than talking. After the “hi”, I'm stuck watching “typing…” with nothing I can do.",
+        busy: "And I might be working, driving or with my family. A lone “hi” makes me open the chat just to find out I still don't know what it's about.",
+        fullQuestion: "With the full question, I'll answer as soon as I can, even if you've already left. Nobody waits for anybody.",
+        isItRude: "but doesn't that seem rude?",
+        notRude: "Not at all! Say hi, ask how I'm doing, send a sticker. Just put it all together with the question in the same message 😉",
+
+        alsoTitle: "This also goes for",
+        whatAbout: "what about “you there?”",
+        alsoNo: "That too 😄 Same goes for:",
+        alsoCounts: [
+            "you there?",
+            "hi, how are you?",
+            "good morning!",
+            "got a minute?",
+            "can I ask you something?",
+            `${firstName}?`,
+            "yo",
+            "hey",
+            "👋",
+        ],
+
+        formulaTitle: "The formula",
+        howDoI: "so how do I do it?",
+        oneMessage: "It's one message, all together:",
+        formula: [
+            { label: "greeting", text: `Hi ${firstName}, how are you?` },
+            { label: "context", text: "I saw you recommended an electrician." },
+            { label: "question", text: "Can you send me his contact?" },
+        ],
+        anotherExample: "Another example, in one message:",
+        example: `Hi ${firstName}, how are you? I'll be near your place on Sunday afternoon. Will you be around?`,
+        justAsk: "Just ask the question.",
+        answerFaster: "I'll answer much faster.",
+
+        closing: "This isn't 100% serious (but kind of is 👀). Want a page like this?",
+        codeLink: "The code is open",
+
+        eggWord: "hi",
+        eggMessage: "😅 See? Just “hi” tells me nothing. Send the question!",
+    }),
+};

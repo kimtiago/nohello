@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+    --color-canvas: #0d1a16;
+    --color-wall: #101f1b;
+    --color-bar: #16271f;
+    --color-line: rgb(255 255 255 / 0.1);
+    --color-fg: #eaf1ee;
+    --color-muted: #a9bbb3;
+
+    --color-bubble-owner: #1d2f28;
+    --color-bubble-you: #0f5a45;
+    --color-meta-you: #bcdcd0;
+    --color-bubble-wrong: #6e2f2c;
+    --color-meta-wrong: #f0c9c4;
+
+    --color-wall-bad: #24130f;
+    --color-wall-good: #0b2a1f;
+
+    --color-accent: #5fe3b0;
+    --color-bad: #ff9a8f;
+    --color-good: #5fe3b0;
+
+    --animate-blink: blink 1s step-end infinite;
+    --animate-wiggle: wiggle 0.6s ease-in-out;
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes wiggle {
+        0%,
+        100% {
+            transform: rotate(0);
+        }
+        25% {
+            transform: rotate(-1.5deg);
+        }
+        75% {
+            transform: rotate(1.5deg);
+        }
+    }
+}
+
+@layer base {
+    html {
+        color-scheme: dark;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        @apply bg-canvas font-sans text-fg;
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+        background: rgb(95 227 176 / 0.3);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+        border-radius: 6px;
+    }
+}
+
+/* Waiting for the browser's language (localePendingScript in src/i18n/index.ts). If React never gets there, show the page anyway */
+html[data-locale-pending] body {
+    visibility: hidden;
+    animation: locale-reveal 0s 3s forwards;
+}
+
+@keyframes locale-reveal {
+    to {
+        visibility: visible;
+    }
+}
+
+/* Chat wallpaper: small, quiet marks, the texture every messaging app has behind its bubbles */
+.wallpaper {
+    background-color: var(--color-wall);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96' fill='none' stroke='white' stroke-opacity='0.035' stroke-width='1.5' stroke-linecap='round'><path d='M14 16h14a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H20l-6 5v-5a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4z'/><circle cx='70' cy='22' r='7'/><path d='M60 66l8 8 14-16'/><path d='M18 70h16M26 62v16'/></svg>");
+}
+
+/* If the page's JavaScript fails or is slow, the conversation shows anyway: LocaleSync marks the page once it has started */
+html:not([data-hydrated]) :is([data-reveal], [data-demo-full], [data-demo-summary]) {
+    animation: page-fallback 0s 3s forwards;
+}
+
+@keyframes page-fallback {
+    to {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+    }
+}
+
+/* Bubble entering on scroll (src/components/reveal.tsx) */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    transition:
+        opacity 0.35s ease-out,
+        transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.15);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal][data-visible="true"] {
+    opacity: 1;
+    transform: none;
+}
+
+/* Bubble entering a playing conversation (src/components/chat-demo.tsx) */
+.bubble-in {
+    animation: bubble-in 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+}
+
+@keyframes bubble-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.97);
+    }
+}
+
+/* The verdict on each example once it finishes playing (src/components/chat-demo.tsx): a shake for wrong, a bounce for right */
+.demo-finished-bad {
+    --demo-glow: var(--color-bad);
+    animation:
+        demo-shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97),
+        demo-glow 1.5s ease-out 3;
+}
+
+.demo-finished-good {
+    --demo-glow: var(--color-good);
+    animation:
+        demo-bounce 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.15),
+        demo-glow 1.5s ease-out 3;
+}
+
+.demo-stamp {
+    animation: demo-stamp 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+
+.demo-gap {
+    animation:
+        bubble-in 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.15) both,
+        demo-gap 1s ease-in-out 3;
+}
+
+@keyframes demo-shake {
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes demo-bounce {
+    40% {
+        transform: scale(1.025);
+    }
+}
+
+@keyframes demo-glow {
+    from {
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--demo-glow) 55%, transparent);
+    }
+    to {
+        box-shadow: 0 0 0 12px transparent;
+    }
+}
+
+@keyframes demo-stamp {
+    from {
+        opacity: 0;
+        transform: scale(2.4) rotate(-20deg);
+    }
+}
+
+@keyframes demo-gap {
+    50% {
+        opacity: 0.55;
+    }
+}
+
+/* Gentle bob on the "more below" button (src/components/scroll-hint.tsx) */
+.scroll-hint {
+    animation: scroll-hint 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-hint {
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+.typing-dot {
+    animation: typing 1.2s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes typing {
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-3px);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
+}
