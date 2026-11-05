@@ -2,6 +2,8 @@
 export type LocaleDefinition = {
     ogLocale: string; // Open Graph format, e.g. pt_BR
     fallbackName: string; // used when NEXT_PUBLIC_OWNER_NAME is empty: a generic full name, natural in this language
+    rtl?: true; // written right to left: the page mirrors
+    givenNameLast?: true; // the name people are called by is the last word of the full name, as in Vietnamese
     messages: (firstName: string) => Messages;
 };
 
@@ -14,6 +16,7 @@ export type Messages = {
     you: string;
     typing: string;
     contactPhone: string; // fictional, in the country's own format
+    contactName: string; // the example electrician: a common name in this language
     chat: string;
     moreMessages: string;
     moreMessagesLabel: string;

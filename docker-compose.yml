@@ -9,7 +9,7 @@ services:
     environment:
       # Public address of the site, used in link previews
       NEXT_PUBLIC_SITE_URL: https://your-site.com
-      # pt-BR, en, es, fr, de or it. Empty: each visitor gets their browser's language, and link previews use English
+      # en, pt-BR, pt, es, fr, de, it, cs, pl, sv, tr, id, vi, ru, uk, fa, he or zh-CN. Empty: each visitor gets their browser's language, and link previews use English
       NEXT_PUBLIC_LANGUAGE: ""
       # Full name, shown in the header. The rest of the page uses only the first name. Empty: a generic name
       NEXT_PUBLIC_OWNER_NAME: ""

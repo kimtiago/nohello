@@ -7,7 +7,7 @@ import { buildLocale, configuredLocale, getCopy, localePendingScript } from "@/i
 import { LocaleSync } from "@/i18n/use-copy";
 import { fontSans } from "./fonts";
 
-const { ogLocale, owner, t } = getCopy(buildLocale, buildConfig.owner);
+const { ogLocale, dir, owner, t } = getCopy(buildLocale, buildConfig.owner);
 
 export const metadata: Metadata = {
     metadataBase: new URL(site.url),
@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         // The language can be switched before hydration: see localePendingScript
-        <html lang={buildLocale} className={fontSans.variable} suppressHydrationWarning>
+        <html lang={buildLocale} dir={dir} className={fontSans.variable} suppressHydrationWarning>
             <body>
                 {/* Without JavaScript, nothing would reveal the conversation */}
                 <noscript>

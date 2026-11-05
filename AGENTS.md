@@ -26,10 +26,12 @@ section, and it asks search engines not to index it.
 1. **Simple**: one page, static export (`output: "export"` → `out/`). No database, auth, API or server.
    The Docker image is built with no personal settings; `docker/apply-config.sh` applies the same `NEXT_PUBLIC_` variables when
    the container starts, in the HTML for link previews and in `window.__NOHELLO_CONFIG__` for the page. New settings need both.
-2. **Six languages**: pt-BR, en, es, fr, de, it, one file each in `src/i18n/locales/` (no text in the components). `NEXT_PUBLIC_LANGUAGE`
+2. **18 languages**: en, pt-BR, pt, es, fr, de, it, cs, pl, sv, tr, id, vi, ru, uk, fa, he, zh-CN, one file each in
+   `src/i18n/locales/` (no text in the components; `fa` and `he` are right to left, so layouts use logical properties such as
+   `ms-`, `ps-`, `start-` and `rounded-ss-`). `NEXT_PUBLIC_LANGUAGE`
    fixes the language at build time; empty, each visitor gets their browser's language and the prerendered HTML and link
-   preview are in English. The whole repository is in English (README, changelog, code, comments, commits and this file); Portuguese only appears in
-   the `pt-BR` locale.
+   preview are in English. The whole repository is in English (README, changelog, code, comments, commits and this file); other languages only appear in
+   their own locale files.
 3. **Design**: the page is a chat conversation, mobile first, full width on desktop (no centered phone column), dark-only. Tokens in `src/app/globals.css` (`@theme`:
    `canvas`, `wall`, `bar`, `bubble-owner`, `bubble-you`, `bubble-wrong`, `wall-bad`, `wall-good`, `accent`, `bad`, `good`). Every animation respects
    `prefers-reduced-motion`.

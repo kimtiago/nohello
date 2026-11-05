@@ -13,6 +13,7 @@ export const fr: LocaleDefinition = {
         you: "Toi",
         typing: `${firstName} est en train d'écrire`,
         contactPhone: "06 39 98 00 00", // Reserved for fiction in France
+        contactName: "Pierre Martin",
         chat: "Envoyer un message",
         moreMessages: "Il y a d'autres messages",
         moreMessagesLabel: "Il y a d'autres messages\u00a0: descendre dans la page",

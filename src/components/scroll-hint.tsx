@@ -40,7 +40,7 @@ export function ScrollHint() {
             className={`fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-30 -translate-x-1/2 transition-opacity duration-300 ${
                 visible ? "opacity-100" : "pointer-events-none opacity-0"
             }`}>
-            <span className="scroll-hint flex items-center gap-1.5 rounded-full bg-accent py-2 pr-3 pl-4 text-[15px] font-semibold whitespace-nowrap text-canvas shadow-lg shadow-black/50">
+            <span className="scroll-hint flex items-center gap-1.5 rounded-full bg-accent py-2 ps-4 pe-3 text-[15px] font-semibold whitespace-nowrap text-canvas shadow-lg shadow-black/50">
                 {t.moreMessages}
                 <ChevronDown className="size-5" strokeWidth={2.5} aria-hidden="true" />
             </span>

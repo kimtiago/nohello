@@ -34,7 +34,7 @@ export function Meme({ src, time }: MemeProps) {
                             onError={() => setFailed(true)}
                             className="object-cover"
                         />
-                        <span className="absolute bottom-1.5 left-1.5 rounded bg-black/60 px-1.5 text-xs font-bold text-white">GIF</span>
+                        <span className="absolute bottom-1.5 start-1.5 rounded bg-black/60 px-1.5 text-xs font-bold text-white">GIF</span>
                     </span>
                 </Bubble>
             </Reveal>

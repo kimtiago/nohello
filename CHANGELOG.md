@@ -3,6 +3,19 @@
 All notable changes to nohello. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-11-05
+
+### Added
+
+- Twelve more languages, so the page has the same ones as nohello.net: Portuguese (Portugal), Czech, Polish, Swedish,
+  Turkish, Indonesian, Vietnamese, Russian, Ukrainian, Persian, Hebrew and Chinese (simplified). Persian and Hebrew read
+  right to left, and the conversation mirrors.
+
+### Changed
+
+- Portuguese outside Brazil, such as `pt-PT`, now gets Portuguese from Portugal instead of Brazilian Portuguese.
+- The example electrician's name follows the page's language, instead of always being in English.
+
 ## [1.0.0] - 2026-11-05
 
 First public version.
@@ -21,4 +34,5 @@ First public version.
   fails or is slow.
 - Vercel Web Analytics and Speed Insights, only in Vercel builds.
 
+[1.1.0]: https://github.com/kimtiago/nohello/releases/tag/v1.1.0
 [1.0.0]: https://github.com/kimtiago/nohello/releases/tag/v1.0.0

@@ -18,8 +18,8 @@ const lines = [
     `load_preview() {`,
     `    case "$1" in`,
     ...locales.map(
-        ({ code, title, description, ogLocale, fallbackName }) =>
-            `    ${quote(code)}) TITLE=${quote(title)} DESCRIPTION=${quote(description)} OG_LOCALE=${quote(ogLocale)} FALLBACK_NAME=${quote(fallbackName)} ;;`,
+        ({ code, title, description, ogLocale, fallbackName, givenNameLast }) =>
+            `    ${quote(code)}) TITLE=${quote(title)} DESCRIPTION=${quote(description)} OG_LOCALE=${quote(ogLocale)} FALLBACK_NAME=${quote(fallbackName)} GIVEN_NAME_LAST=${givenNameLast ? 1 : 0} ;;`,
     ),
     `    esac`,
     `}`,

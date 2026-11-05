@@ -14,12 +14,15 @@ html_escape() { printf '%s' "$1" | sed -e 's/&/\&amp;/g' -e 's/"/\&quot;/g' -e "
 js_escape() { printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/</\\u003c/g'; }
 sed_escape() { printf '%s' "$1" | sed -e 's/[\\&|]/\\&/g'; }
 
-# Same rule as matchLocale in src/i18n/index.ts: exact, or by base language
+# Same rule as findLocale in src/i18n/match-locale.ts: exact, then the base language itself, then any with the same base
 resolve_locale() {
     wanted=$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')
     [ -n "$wanted" ] || return 0
     for locale in $LOCALES; do
         [ "$(printf '%s' "$locale" | tr '[:upper:]' '[:lower:]')" = "$wanted" ] && { printf '%s' "$locale"; return 0; }
+    done
+    for locale in $LOCALES; do
+        [ "$(printf '%s' "$locale" | tr '[:upper:]' '[:lower:]')" = "${wanted%%-*}" ] && { printf '%s' "$locale"; return 0; }
     done
     for locale in $LOCALES; do
         [ "$(printf '%s' "${locale%%-*}" | tr '[:upper:]' '[:lower:]')" = "${wanted%%-*}" ] && { printf '%s' "$locale"; return 0; }
@@ -40,7 +43,8 @@ site_url=${site_url:-http://localhost:8080}
 locale=$(resolve_locale "$language")
 load_preview "${locale:-en}"
 preview_owner=${owner:-$FALLBACK_NAME}
-first_name=${preview_owner%% *}
+# The name people are called by: the first word, or the last in languages like Vietnamese (see givenNameLast)
+if [ "$GIVEN_NAME_LAST" = 1 ]; then first_name=${preview_owner##* }; else first_name=${preview_owner%% *}; fi
 first_name_for_sed=$(sed_escape "$first_name")
 description=$(printf '%s' "$DESCRIPTION" | sed "s|@@FIRST_NAME@@|$first_name_for_sed|g")
 

@@ -16,7 +16,7 @@ export default function Home() {
     const { gifs } = useSiteConfig();
 
     // A fictional contact: the same person everywhere, with a local number
-    const electrician: Contact = { name: "John Smith", phone: t.contactPhone, photo: "/electrician.jpg" };
+    const electrician: Contact = { name: t.contactName, phone: t.contactPhone, photo: "/electrician.jpg" };
 
     const badChat: ChatItem[] = [
         { kind: "message", from: "you", text: t.bad.hi, time: "14:15" },

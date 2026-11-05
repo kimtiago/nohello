@@ -57,12 +57,12 @@ export function GreetingTyper({ greetings, quote }: GreetingTyperProps) {
                     {typed}
                     {/* the strike line draws itself once the word is fully typed */}
                     <span
-                        className="absolute top-[54%] left-0 h-[0.07em] rounded-full bg-bad transition-[width] duration-500 ease-out"
+                        className="absolute top-[54%] start-0 h-[0.07em] rounded-full bg-bad transition-[width] duration-500 ease-out"
                         style={{ width: complete ? "100%" : "0%" }}
                     />
                 </span>
                 {quote[1]}
-                <span className="ml-1 inline-block h-[0.85em] w-0.5 animate-blink bg-fg/80 align-[-0.05em]" />
+                <span className="ms-1 inline-block h-[0.85em] w-0.5 animate-blink bg-fg/80 align-[-0.05em]" />
             </span>
         </span>
     );

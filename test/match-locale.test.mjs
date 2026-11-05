@@ -20,8 +20,15 @@ const cases = [
     ["pt-BR", "pt-BR"],
     ["pt-br", "pt-BR"],
     ["PT-BR", "pt-BR"],
-    ["pt", "pt-BR"],
-    ["pt-PT", "pt-BR"],
+    ["pt", "pt"],
+    ["pt-PT", "pt"],
+    ["pt-AO", "pt"],
+    ["zh-CN", "zh-CN"],
+    ["zh", "zh-CN"],
+    ["zh-TW", "zh-CN"],
+    ["he-IL", "he"],
+    ["fa-IR", "fa"],
+    ["sv-FI", "sv"],
     ["en-US", "en"],
     ["es-419", "es"],
     ["fr-CA", "fr"],
@@ -41,7 +48,7 @@ for (const [value, expected] of cases) {
 }
 
 test("every language resolves to itself", () => {
-    assert.equal(locales.length, 6);
+    assert.equal(locales.length, 18);
     for (const locale of locales) {
         assert.equal(findLocale(locales, locale), locale);
         assert.equal(shellLocale(locale), locale);

@@ -14,8 +14,9 @@ the next message. It's made for people who get the link on WhatsApp and open it 
 ## Features
 
 - **Your name and photo**, set through environment variables, with no code to change.
-- **Six languages**: English, Brazilian Portuguese, Spanish, French, German and Italian. Set one, or let each visitor get their
-  browser's language.
+- **18 languages**: English, Portuguese (Brazil and Portugal), Spanish, French, German, Italian, Czech, Polish, Swedish,
+  Turkish, Indonesian, Vietnamese, Russian, Ukrainian, Persian, Hebrew and Chinese (simplified). Persian and Hebrew read right
+  to left. Set one, or let each visitor get their browser's language.
 - **A link preview that sparks curiosity**, with a title, description and image that don't give away the subject.
 - **Your favorite GIFs** in the conversation.
 - **Light to host**: a static site with no database or backend, on Vercel, in Docker or on any static host.
@@ -64,7 +65,7 @@ To build the image from the code instead: `docker build -t kimtiago/nohello:late
 | ------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | `NEXT_PUBLIC_OWNER_NAME`  | Your full name, at the top of the conversation. The rest of the text only uses your first name | A generic name in the page's language                          |
 | `NEXT_PUBLIC_OWNER_PHOTO` | Public URL of your photo (`http` or `https`)                                                   | A generic avatar                                               |
-| `NEXT_PUBLIC_LANGUAGE`    | Language of the page: `en`, `pt-BR`, `es`, `fr`, `de` or `it`                                  | Each visitor's browser language                                |
+| `NEXT_PUBLIC_LANGUAGE`    | Language of the page, by its code (see [Language](#language))                                  | Each visitor's browser language                                |
 | `NEXT_PUBLIC_GIF_1_URL`   | GIF after the voicemail comparison                                                             | No GIF there                                                   |
 | `NEXT_PUBLIC_GIF_2_URL`   | GIF after the message about “typing…”                                                          | No GIF there                                                   |
 | `NEXT_PUBLIC_SITE_URL`    | Public address of the site, used in link previews                                              | Vercel: the production domain. Docker: `http://localhost:8080` |
@@ -81,7 +82,8 @@ If the photo URL is empty, invalid or doesn't load, the page uses the generic av
 
 ### Language
 
-With `NEXT_PUBLIC_LANGUAGE` set, everyone sees the page in that language, including in the link preview.
+With `NEXT_PUBLIC_LANGUAGE` set, everyone sees the page in that language, including in the link preview. The codes are `en`,
+`pt-BR`, `pt` (Portugal), `es`, `fr`, `de`, `it`, `cs`, `pl`, `sv`, `tr`, `id`, `vi`, `ru`, `uk`, `fa`, `he` and `zh-CN`.
 
 Without it, each visitor sees their browser's language, or English if the page doesn't have it. The link preview can't
 follow the browser of whoever receives the link, so it's always in English. If the people you send the link to share a
@@ -114,7 +116,7 @@ Built with Next.js, React, Tailwind CSS and TypeScript. Instructions for AI codi
 ### Adding a language
 
 1. Copy `src/i18n/locales/en.ts` to a file named after the language code, such as `nl.ts`, and translate it.
-2. Register it in `src/i18n/index.ts`.
+2. Register it in `src/i18n/index.ts`. If it's written right to left, add `rtl: true` to it.
 3. Add the code to the language lists in this README, `.env.example` and `docker-compose.yml`.
 
 All of the page's text is in `src/i18n/locales/`, one file per language, so this is also where to change the wording.

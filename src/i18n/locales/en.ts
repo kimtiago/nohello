@@ -12,6 +12,7 @@ export const en: LocaleDefinition = {
         you: "You",
         typing: `${firstName} is typing`,
         contactPhone: "(202) 555-0100", // Reserved for fiction in the US
+        contactName: "John Smith",
         chat: "Message",
         moreMessages: "More messages",
         moreMessagesLabel: "More messages: scroll down",

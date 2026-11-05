@@ -1,0 +1,107 @@
+import type { LocaleDefinition } from "@/i18n/types";
+
+export const sv: LocaleDefinition = {
+    ogLocale: "sv_SE",
+    fallbackName: "Sven Svensson",
+    messages: (firstName) => ({
+        title: "Jag har sett ditt meddelande 👀",
+        description: `${firstName} här! Jag lämnade en kort lapp innan jag svarar. Det går snabbt.`,
+
+        online: "online",
+        today: "i dag",
+        you: "Du",
+        typing: `${firstName} skriver`,
+        contactPhone: "070-174 06 50", // Reserved for fiction in Sweden
+        contactName: "Erik Johansson",
+        chat: "Meddelande",
+        moreMessages: "Fler meddelanden",
+        moreMessagesLabel: "Fler meddelanden: scrolla ner",
+
+        headline: "Snälla, skicka inte bara",
+        quote: ["”", "”"],
+        greetings: [
+            "hej",
+            "hallå",
+            "tjena",
+            "god morgon!",
+            "tja",
+            "är du där?",
+            "heeej",
+            "👋",
+            `hej ${firstName}`,
+            "god eftermiddag",
+            "hejsan",
+            `${firstName}?`,
+            "tjenare",
+            "hur är läget?",
+            "hallå?",
+        ],
+        voicemail:
+            "Tänk dig att du lämnar ett röstmeddelande som bara säger ”hej” och lägger på. Den andra lyssnar och vet fortfarande inte vad du ville. 🤷 Chatt fungerar på samma sätt.",
+
+        differenceTitle: "Skillnaden",
+        howSo: "hur menar du? 😅",
+        twoWays: "Kolla: samma fråga, ställd på två sätt 👇",
+        bad: {
+            title: "Inte så här",
+            summary: "11 minuter för en fråga",
+            hi: "hej",
+            gapOne: "4 min senare",
+            replyHi: "hej! vad gäller det? 🙂",
+            howAreYou: "hur mår du?",
+            gapTwo: "3 min senare",
+            replyHowAreYou: "bra, du då? 😅",
+            ask: "kan du skicka kontakten till den där elektrikern?",
+            answer: "visst",
+        },
+        good: {
+            title: "Så här",
+            summary: "1 minut, och ingen behövde vänta",
+            ask: `Hej ${firstName}, hur mår du? Kan du skicka kontakten till elektrikern du tipsade om? 🙏`,
+            answer: "Hej! Här är hans kontakt 👍",
+            thanks: "Tack!",
+        },
+
+        whyTitle: "Varför jag ber om det här",
+        whatsTheProblem: "men vad är det för fel med att säga hej först?",
+        typingIsSlow: "Att skriva går långsammare än att prata. Efter ”hej” sitter jag och tittar på ”skriver…” utan att kunna göra något.",
+        busy: "Och jag kanske jobbar, kör bil eller är med familjen. Ett ensamt ”hej” får mig att öppna chatten bara för att upptäcka att jag fortfarande inte vet vad det gäller.",
+        fullQuestion: "Med hela frågan svarar jag så fort jag kan, även om du redan har gått. Ingen behöver vänta på någon.",
+        isItRude: "men verkar inte det oartigt?",
+        notRude: "Inte alls! Säg hej, fråga hur jag mår, skicka en sticker. Lägg bara ihop allt med frågan i samma meddelande 😉",
+
+        alsoTitle: "Det gäller också",
+        whatAbout: "och ”är du där?”",
+        alsoNo: "Det också 😄 Samma sak gäller:",
+        alsoCounts: [
+            "är du där?",
+            "hej, hur mår du?",
+            "god morgon!",
+            "har du en minut?",
+            "kan jag fråga en sak?",
+            `${firstName}?`,
+            "tja",
+            "hallå",
+            "👋",
+        ],
+
+        formulaTitle: "Formeln",
+        howDoI: "så hur gör jag?",
+        oneMessage: "Det är ett enda meddelande, allt på en gång:",
+        formula: [
+            { label: "hälsning", text: `Hej ${firstName}, hur mår du?` },
+            { label: "sammanhang", text: "Jag såg att du tipsade om en elektriker." },
+            { label: "fråga", text: "Kan du skicka hans kontakt?" },
+        ],
+        anotherExample: "Ett till exempel, i ett meddelande:",
+        example: `Hej ${firstName}, hur mår du? Jag är nära dig på söndag eftermiddag. Är du hemma då?`,
+        justAsk: "Ställ bara frågan.",
+        answerFaster: "Jag svarar mycket snabbare.",
+
+        closing: "Det här är inte 100 % allvar (men lite är det 👀). Vill du ha en sådan sida?",
+        codeLink: "Koden är öppen",
+
+        eggWord: "hej",
+        eggMessage: "😅 Ser du? Bara ”hej” säger mig ingenting. Skicka frågan!",
+    }),
+};

@@ -12,6 +12,7 @@ export const ptBR: LocaleDefinition = {
         you: "Você",
         typing: `${firstName} está digitando`,
         contactPhone: "(11) 90000-0000", // No range is reserved for fiction here: zeros make it look obviously fake
+        contactName: "João Silva",
         chat: "Conversar",
         moreMessages: "Tem mais mensagens",
         moreMessagesLabel: "Tem mais mensagens: descer a página",

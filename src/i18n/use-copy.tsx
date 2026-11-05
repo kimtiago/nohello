@@ -35,12 +35,13 @@ export function useCopy() {
 
 // Keeps the document in the page's language, and reveals the page once it's there.
 export function LocaleSync() {
-    const { locale, t } = useCopy();
+    const { locale, dir, t } = useCopy();
 
     useEffect(() => {
         document.documentElement.lang = locale;
+        document.documentElement.dir = dir;
         delete document.documentElement.dataset.localePending;
-    }, [locale]);
+    }, [locale, dir]);
 
     useEffect(() => {
         document.documentElement.dataset.hydrated = "";

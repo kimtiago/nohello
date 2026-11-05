@@ -12,6 +12,7 @@ export const it: LocaleDefinition = {
         you: "Tu",
         typing: `${firstName} sta scrivendo`,
         contactPhone: "333 000 0000", // No range is reserved for fiction here: zeros make it look obviously fake
+        contactName: "Luca Bianchi",
         chat: "Invia messaggio",
         moreMessages: "Ci sono altri messaggi",
         moreMessagesLabel: "Ci sono altri messaggi: scorri in basso",
