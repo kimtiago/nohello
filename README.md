@@ -52,6 +52,8 @@ The site runs at <http://localhost:8080>. After changing a variable, run the sam
 - Set `NEXT_PUBLIC_SITE_URL` to your public address. Without it, the link preview points to `localhost` and its image doesn't appear on WhatsApp.
 - The language and name are applied by the page's JavaScript. If it's turned off or fails to load, the page shows in English with a generic name. The link preview isn't affected.
 - The container doesn't handle HTTPS: to publish it on the internet, put a reverse proxy such as Caddy, Traefik or Nginx in front of it.
+- If that proxy runs on the same machine, publish the port as `"127.0.0.1:8080:8080"`. Docker opens published ports even past
+  firewalls such as `ufw`, so the plain `"8080:8080"` also leaves the site reachable without HTTPS.
 
 To build the image from the code instead: `docker build -t kimtiago/nohello:latest .`
 
@@ -98,6 +100,14 @@ Travolta and Sylvester pacing back and forth.
 - Use a light file, because GIFs load with the page. On GIPHY, URLs ending in `200w.gif` are usually under 1 MB.
 - If the URL is empty, invalid or doesn't load, the GIF's message doesn't appear. It also doesn't appear for people who
   asked for reduced motion.
+
+### Privacy
+
+The photo and the GIFs load straight from their URLs, so whoever hosts them (GIPHY or GitHub, with the defaults and the tip
+above) sees the IP address of everyone who opens your page. Apart from Vercel Analytics and Speed Insights, if you turn them
+on, the page itself sends nothing anywhere. To avoid that, host the
+images yourself, for example on the same server as the site, and use their URLs. Leaving a GIF's URL empty also works: that
+message just doesn't appear.
 
 ## Development
 

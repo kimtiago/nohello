@@ -3,6 +3,19 @@
 All notable changes to nohello. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [1.1.1] - 2026-11-05
+
+### Security
+
+- Other sites can no longer show the page inside a frame: the Docker image and Vercel deployments send `X-Frame-Options` and
+  `Content-Security-Policy: frame-ancestors 'none'`.
+- The GitHub Actions that build and publish the project are pinned to exact commits.
+
+### Added
+
+- The README explains which outside services see your visitors' IP addresses, and how to keep the Docker port off the
+  network when a proxy runs on the same machine.
+
 ## [1.1.0] - 2026-11-05
 
 ### Added
@@ -34,5 +47,6 @@ First public version.
   fails or is slow.
 - Vercel Web Analytics and Speed Insights, only in Vercel builds.
 
+[1.1.1]: https://github.com/kimtiago/nohello/releases/tag/v1.1.1
 [1.1.0]: https://github.com/kimtiago/nohello/releases/tag/v1.1.0
 [1.0.0]: https://github.com/kimtiago/nohello/releases/tag/v1.0.0

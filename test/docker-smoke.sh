@@ -56,6 +56,17 @@ if docker exec "$name" wget -q --spider http://127.0.0.1:8080/does-not-exist 2>/
     exit 1
 fi
 
+headers=$(docker exec "$name" wget -q -S -O /dev/null http://127.0.0.1:8080/ 2>&1)
+for header in "X-Frame-Options: DENY" "Content-Security-Policy: frame-ancestors 'none'" "X-Content-Type-Options: nosniff"; do
+    case "$headers" in
+        *"$header"*) ;;
+        *)
+            echo "Missing header: $header" >&2
+            exit 1
+            ;;
+    esac
+done
+
 [ "$(docker exec "$name" id -u)" = 101 ] || {
     echo "The container should not run as root" >&2
     exit 1

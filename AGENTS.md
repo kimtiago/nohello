@@ -69,4 +69,7 @@ test/             language tests, with Node's test runner, and a check of the Do
 ## Workflow
 
 - Line endings are LF, with 4 spaces of indentation (2 in YAML). The pre-commit hook formats staged files; `npm run format` does it by hand.
+- GitHub Actions are pinned to a commit SHA with the version in a comment (`@<sha> # v1.2.3`): update both together.
+- Response headers live in two places, `docker/nginx.conf` and `vercel.json` (static export ignores `headers()` in
+  `next.config`): change both.
 - Before finishing: `npm run check` and `npm run build`. CI (`.github/workflows/ci.yml`) runs the same, and also builds and checks the Docker image.
